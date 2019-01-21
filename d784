@@ -1,19 +1,28 @@
-//d784. 連續元素的和 by Snail
 #include <iostream>
-#include <algorithm>
+
 using namespace std;
 
-int main () {
-	int tc, n, s, a, maxs;
-	cin >> tc;
-	while (tc--) {
-		cin >> n >> s;							//輸入第一個數字
-		maxs = -1000000;
-		while (--n) {							//輸入剩下的n-1個數字
-			cin >> a;
-			s = max (a, a+s);					//當前最大和
-			maxs = max (s, maxs);				//全域最大和
+int main() {
+	int t;
+	cin >> t;
+	for (int k = 0; k < t; k++) {
+		int n;
+		cin >> n;
+		int now = -10000, max = -10000;
+		for (int i = 0; i < n; i++) {
+			int temp;
+			cin >> temp;
+			if (now + temp > temp) {
+				now += temp;
+			} else {
+				now = temp;
+			}
+			if (now > max) {
+				max = now;
+			}
 		}
-		cout << maxs << endl;
+		cout << max << endl;
 	}
+	
+    return 0;
 }
