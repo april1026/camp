@@ -1,0 +1,30 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+	long long dp[30001] = {1};
+	int f[] = {10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5};
+	
+	for (int i = 0; i < 11; i++) {
+		for (int j = f[i]; j < 30001; j++) {
+			dp[j] += dp[ j-f[i] ];
+		}
+	}
+	float n;
+	while(cin >> n) {
+		if (n == 0)
+			break;
+		int a = n * 100;
+//		cout << a << endl;
+//		cout << n * 100 << endl;
+		if (a % 10 == 1 || a % 10 == 6) {
+			a--;
+		} else if (a % 10 == 9 || a % 10 == 4) {
+			a++;
+		}
+//		cout << a << endl;
+		cout << setw(6) << fixed << setprecision(2) << n << setw(17) << dp[int(a)] << endl;
+	}
+}
