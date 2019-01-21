@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	for (int k = 0; k < t; k++) {
+		int n;
+		cin >> n;
+		int p;
+		cin >> p;
+		int longth[p];
+		for (int i = 0; i < p; i++) {
+			cin >> longth[i];
+		}
+		int dp[n+1] = {1};
+		for (int i = 0; i < p; i++) {
+			for (int j = n; j >= longth[i]; j--) {
+				dp[j] += dp[j - longth[i]];
+			}
+		}
+	//	cout << endl << max << endl;
+		cout << (dp[n] ? "YES" : "NO") << endl;
+	}
+}
