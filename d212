@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int input;
+	long long dp[101] = {0, 1, 2};
+	for (int i = 3; i <= 100; i++) {
+		dp[i] = dp[i-1] + dp[i-2];
+		cout << dp[i] << endl;
+	}
+	while(cin >> input) {
+		cout << dp[input] << endl;
+	}
+}
