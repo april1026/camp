@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int t;
+	cin >> t;
+	for (int k = 0; k <= t; k++) {
+		vector <char> s;
+		string input;
+		int ans = 0;
+		getline(cin, input);
+		for(int i = 0; i < input.size(); i++) {
+			if (input[i] == '.')
+				continue;
+			switch (input[i]){
+				case 'p':
+					s.push_back('p');
+					break;
+				case 'q':
+					if (s.size() > 0 && s.back() == 'p') {
+						s.pop_back();
+						ans++;
+					}
+					break;
+			}
+		}
+		if (k != 0) {
+			cout << ans << endl;
+		}
+	}
+}
