@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	char map[15][31];
+	int output[15][30] = {0};
+	for (int i = 0; i < 15; i++) {
+		cin >> map[i];
+	}
+	for (int i = 0; i < 15; i++) {
+		for (int j = 0; j < 30; j++) {
+			switch (map[i][j]) {
+				case '*':
+					output[i][j] = 9;
+					for (int q = -1; q <= 1; q++) {
+						for (int k = -1; k <= 1; k++) {
+							if (i + q < 0 || i + q >= 15 || j + k < 0 || j + k >= 30)
+								continue;
+							output[i + q][j + k]++;
+						}
+					}
+					break;
+			}
+		}
+	}
+	for (int i = 0; i < 15; i++) {
+		for (int j = 0; j < 30; j++) {
+			if (output[i][j] >= 9)
+				cout << '*';
+			else if (output[i][j] == 0)
+				cout << '.';
+			else
+				cout << output[i][j];
+		}
+		cout << '\n';
+	}
+}
