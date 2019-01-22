@@ -6,10 +6,17 @@ using namespace std;
 int main() {
 	int t;
 	cin >> t;
-	for (int k = 0; k < t; k++) {
+	for (int k = 0; k <= t; k++) {
 		vector <char> s;
 		string input;
-		cin >> input;
+		getline(cin, input);
+		if (k == 0) {
+			continue;
+		}
+		if (input.size() == 0) {
+			cout << "Yes" << endl;
+			continue;
+		}
 //		cout << input << " " << input.size() << endl;
 		bool infor = true;
 		for (int i = 0; i < input.size() && infor; i++) {
